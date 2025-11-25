@@ -1,0 +1,16 @@
+CC = gcc
+CFLAGS = -Wall -g
+TARGET = food_system
+SRCS = main.c auth.c employee.c menu_order.c security.c ui.c
+OBJS = $(SRCS:.c=.o)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJS) $(TARGET) Record.dat
